@@ -1,0 +1,10 @@
+﻿@model decimal?
+@{
+    var attributes = HtmlHelper.AnonymousObjectToHtmlAttributes(ViewData["htmlAttributes"]);
+    if (!attributes.ContainsKey("type"))
+    {
+         attributes.Add("type", "number");
+    }
+    string formatString = ViewData.ModelMetadata.DisplayFormatString ?? "{0:N2}";
+}
+@Html.TextBoxFor(m => m, formatString , attributes)
